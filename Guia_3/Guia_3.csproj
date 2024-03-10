@@ -8,4 +8,30 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="imgs\editar.png" />
+    <None Remove="imgs\eliminar.png" />
+    <None Remove="imgs\guardar.png" />
+    <None Remove="imgs\nuevo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="imgs\editar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgs\eliminar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgs\guardar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgs\nuevo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
 </Project>

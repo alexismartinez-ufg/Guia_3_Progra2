@@ -14,7 +14,29 @@
                 <Style/>
             </DataGrid.RowStyle>
         </DataGrid>
-        
-        
+
+        <Button x:Name="btnNuevo" HorizontalAlignment="Left" Margin="46,17,0,0"
+                VerticalAlignment="Top" Click="btnNuevo_Click" Height="65" Width="50">
+            <StackPanel Height="74">
+                <Image Source="/imgs/nuevo.png" Height="46" Width="34"/>
+                <TextBlock><Run Text="Nuevo"/></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="btnEditar" HorizontalAlignment="Left" Margin="141,17,0,0"
+                VerticalAlignment="Top" Click="btnEditar_Click" Height="65" Width="50">
+            <StackPanel Height="74">
+                <Image Source="/imgs/editar.png" Height="46" Width="34"/>
+                <TextBlock><Run Text="Editar"/></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="btnEliminar" HorizontalAlignment="Left" Margin="232,17,0,0"
+                VerticalAlignment="Top" Click="btnEliminar_Click" Height="65" Width="50">
+            <StackPanel Height="74">
+                <Image Source="/imgs/eliminar.png" Height="46" Width="34"/>
+                <TextBlock><Run Text="Eliminar"/></TextBlock>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>
