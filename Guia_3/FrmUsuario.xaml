@@ -20,10 +20,10 @@
                VerticalAlignment="Top"/>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="120,104,0,0" 
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" 
-                 Background="#FFEBEFBE"/>
+                 Background="#FFEBEFBE" TextChanged="txtNombre_TextChanged"/>
         <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Margin="120,173,0,0" 
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" 
-                 Background="#FFEBEFBE"/>
+                 Background="#FFEBEFBE" TextChanged="txtApellido_TextChanged"/>
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="120,221,0,0" 
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" 
                  Background="#FFEBEFBE"/>
