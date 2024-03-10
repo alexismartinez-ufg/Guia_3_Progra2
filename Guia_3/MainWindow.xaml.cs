@@ -18,7 +18,7 @@ namespace Guia_3
         private void CargarDatos()
         {
             UsuarioDao daoUsuario = new();
-            dgUsuarios.ItemsSource = daoUsuario.Obtener();
+            dgUsuarios.ItemsSource = daoUsuario.ObtenerUsuarioPais();
         }
 
         private int ObtenerIdSeleccionado()
@@ -26,7 +26,7 @@ namespace Guia_3
             var selected = dgUsuarios.SelectedItems;
             foreach (var item in selected)
             {
-                var usr = item as UsuarioDto;
+                var usr = item as UsuarioConPaisDto;
                 return usr.Id;
             }
             return -1;

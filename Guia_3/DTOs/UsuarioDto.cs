@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Reflection.PortableExecutable;
 
 namespace Guia_3.DTOs
 {
@@ -8,7 +9,7 @@ namespace Guia_3.DTOs
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Email { get; set; }
-        public string Pais { get; set; }
+        public int PaisId { get; set; }
 
         public UsuarioDto() { }
 
@@ -18,7 +19,7 @@ namespace Guia_3.DTOs
             Nombre = reader.GetString(1);
             Apellido = reader.GetString(2);
             Email = reader.GetString(3);
-            Pais = reader.GetString(4);
+            PaisId = reader.GetInt32(4);
         }
     }
 }

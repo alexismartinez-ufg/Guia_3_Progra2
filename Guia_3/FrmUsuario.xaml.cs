@@ -14,6 +14,8 @@ namespace Guia_3
         public FrmUsuario(int? id = null)
         {
             InitializeComponent();
+            CargarPaises();
+
             this.Id = id;
 
             if (this.Id != null)
@@ -23,12 +25,20 @@ namespace Guia_3
         private void CargarDatos()
         {
             UsuarioDao daoUsuario = new();
+            PaisDao daoPais = new();
             UsuarioDto usuario = daoUsuario.Obtener(this.Id);
+            PaisDto pais = daoPais.ObtenerPaises(usuario.PaisId);
 
             txtNombre.Text = usuario.Nombre;
             txtApellido.Text = usuario.Apellido;
             txtEmail.Text = usuario.Email;
-            txtPais.Text = usuario.Pais;
+            txtPais.Text = pais.NombrePais;
+        }
+
+        private void CargarPaises()
+        {
+            PaisDao paisesDao = new();
+            txtPais.ItemsSource = paisesDao.ObtenerPaises();
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
@@ -37,10 +47,13 @@ namespace Guia_3
 
             try
             {
+                PaisDto paisSeleccionado = (PaisDto)txtPais.SelectedItem;
+                int paisId = paisSeleccionado?.PaisId ?? 0;
+
                 if (this.Id == null)
-                    daoUsuario.Agregar(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtPais.Text);
+                    daoUsuario.Agregar(txtNombre.Text, txtApellido.Text, txtEmail.Text, paisId);
                 else
-                    daoUsuario.Actualizar(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtPais.Text, Id.Value);
+                    daoUsuario.Actualizar(txtNombre.Text, txtApellido.Text, txtEmail.Text, paisId, Id.Value);
 
                 this.Close();
             }

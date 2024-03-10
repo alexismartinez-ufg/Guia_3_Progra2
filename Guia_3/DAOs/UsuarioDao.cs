@@ -36,6 +36,28 @@ namespace Guia_3.DAOs
             return usuarios;
         }
 
+        public List<UsuarioConPaisDto> ObtenerUsuarioPais()
+        {
+            DBConnection conn = new();
+            List<UsuarioConPaisDto> usuarios = new();
+
+            // Obtener los usuarios
+            List<UsuarioDto> usuariosDto = Obtener();
+
+            // Iterar sobre los usuarios y obtener el nombre del país para cada uno
+            foreach (UsuarioDto usuario in usuariosDto)
+            {
+                PaisDao paisDao = new();
+                PaisDto pais = paisDao.ObtenerPaises(usuario.PaisId);
+                string nombrePais = pais.NombrePais;
+
+                UsuarioConPaisDto usuarioConPais = new(usuario, nombrePais);
+                usuarios.Add(usuarioConPais);
+            }
+
+            return usuarios;
+        }
+
         public UsuarioDto Obtener(int? id)
         {
             DBConnection conn = new();
@@ -66,11 +88,11 @@ namespace Guia_3.DAOs
 
         }
 
-        public void Agregar(string Nombre, string Apellido, string Email, string Pais)
+        public void Agregar(string Nombre, string Apellido, string Email, int Pais)
         {
             DBConnection conn = new DBConnection();
             string query = "INSERT INTO usuarios(" +
-                           "usr_nombre, usr_apellido, usr_email, usr_pais) " +
+                           "usr_nombre, usr_apellido, usr_email, PaisId) " +
                            "VALUES (@nombre, @apellido, @email, @pais)";
 
             using SqlConnection connection = conn.ObtenerConexion();
@@ -93,11 +115,11 @@ namespace Guia_3.DAOs
             }
         }
 
-        public void Actualizar(string Nombre, string Apellido, string Email, string Pais, int Id)
+        public void Actualizar(string Nombre, string Apellido, string Email, int Pais, int Id)
         {
             DBConnection conn = new DBConnection();
             string query = "UPDATE usuarios SET usr_nombre=@nombre, usr_apellido=@apellido," +
-                           "usr_email=@email, usr_pais=@pais " +
+                           "usr_email=@email, PaisId=@pais " +
                            "WHERE usr_id=@id";
 
             using SqlConnection connection = conn.ObtenerConexion();
